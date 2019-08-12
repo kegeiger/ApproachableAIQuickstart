@@ -1,5 +1,4 @@
-# Blank Template
+# Approachable AI
+Getting started with Approachable AI.
 
-This is an empty template and parameters file with the schema reference and top-level properties defined.
-
-`tags: empty, blank `
+`tags: approachable, AI, Azure
