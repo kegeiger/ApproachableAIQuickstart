@@ -1,0 +1,84 @@
+{
+    "$schema": "http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "cogsvcsname": {
+            "type": "string",
+            "defaultValue": "CogSvcs-ApproachableAI"
+        },
+        "location": {
+            "type": "string",
+            "defaultValue": "southcentralus"
+        },
+        "apiType": {
+            "type": "string",
+            "defaultValue": "All Cognitive Services"
+        },
+        "sku": {
+            "type": "string",
+            "defaultValue": "S0"
+        },
+        "logicAppApiVersion": {
+            "type": "string",
+            "defaultValue": "2016-10-01"
+        },
+        "workflowName": {
+            "type": "string",
+            "defaultValue": "LogicApp-ApproachableAI"
+        },
+        "workflowLocation": {
+            "type": "string",
+             "defaultValue": "southcentralus"
+        },
+        "workflowSchema": {
+            "type": "string",
+            "defaultValue": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#"
+        },
+        "logicAppState": {
+            "type": "string",
+            "defaultValue": "Enabled"
+        },
+        "definition": {
+            "type": "string",
+            "defaultValue": "[concat('{\"contentVersion\":\"1.0.0.0\",\"parameters\":{},\"actions\":{},\"triggers\":{},\"outputs\":{},\"$schema\":\"', parameters('workflowSchema'), '\"}')]"
+        },
+        "parameters": {
+            "type": "object",
+            "defaultValue": {}
+        },
+        "tags": {
+            "type": "object",
+            "defaultValue": {}
+        }
+    },
+    "resources": [
+        {
+            "apiVersion": "2016-02-01-preview",
+            "name": "[parameters('cogsvcsname')]",
+            "location": "[parameters('location')]",
+            "type": "Microsoft.CognitiveServices/accounts",
+            "kind": "CognitiveServices",
+            "sku": {
+                "name": "[parameters('sku')]"
+            },
+            "properties": {
+                "customSubDomainName": null,
+                "apiProperties": {
+                    "statisticsEnabled": false
+                }
+            }
+        },
+                {
+            "apiVersion": "[parameters('logicAppApiVersion')]",
+            "name": "[parameters('workflowName')]",
+            "type": "Microsoft.Logic/workflows",
+            "location": "[parameters('workflowLocation')]",
+            "tags": "[parameters('tags')]",
+            "properties": {
+                "definition": "[json(parameters('definition'))]",
+                "parameters": "[parameters('parameters')]",
+                "state": "[parameters('logicAppState')]"
+            }
+        }
+    ]
+}

@@ -1,0 +1,42 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "cogsvcsname": {
+      "value": "CogSvcs-ApproachableAI"
+    },
+    "location": {
+      "value": "southcentralus"
+    },
+    "apiType": {
+      "value": "All Cognitive Services"
+    },
+    "sku": {
+      "value": "S0"
+    },
+    "logicAppApiVersion": {
+      "value": "2016-10-01"
+    },
+    "workflowName": {
+      "value": "LogicApp-ApproachableAI"
+    },
+    "workflowLocation": {
+      "value": "southcentralus"
+    },
+    "workflowSchema": {
+      "value": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#"
+    },
+    "logicAppState": {
+      "value": "Enabled"
+    },
+    "definition": {
+      "value": "[concat('{\"contentVersion\":\"1.0.0.0\",\"parameters\":{},\"actions\":{},\"triggers\":{},\"outputs\":{},\"$schema\":\"', parameters('workflowSchema'), '\"}')]"
+    },
+    "parameters": {
+      "value": {}
+    },
+    "tags": {
+      "value": {}
+    }
+  }
+}

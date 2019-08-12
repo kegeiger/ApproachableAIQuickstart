@@ -1,0 +1,11 @@
+{
+  "$schema": "https://aka.ms/azure-quickstart-templates-metadata-schema#",
+  "type": "QuickStart",
+  "itemDisplayName": "Approachable AI Template",
+  "description": "A template to deploy the two resources to get started with Approachable AI.",
+  "summary": "Deploys a Cognitive Services instance and a Logic App.",
+  "githubUsername": "kegeiger",
+  "dateUpdated": "2019-08-11"
+}
+
+
